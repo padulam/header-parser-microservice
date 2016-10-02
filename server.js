@@ -10,8 +10,8 @@ app.get('/',function(request,response){
 });
 
 function getIpAddress(request){
-	if(request.headers['x-forward-for']){
-		var ips = request.headers['x-forward-for'].split(",");
+	if(request.headers['x-forwarded-for']){
+		var ips = request.headers['x-forwarded-for'].split(",");
 		return ips[ips.length -1];
 	}else{
 		return request.connection.remoteAddress;
